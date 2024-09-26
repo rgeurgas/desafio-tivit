@@ -1,0 +1,46 @@
+networks:
+  tivit:
+
+services:
+  postgres:
+    container_name: postgres-tivit
+    image: 'postgres'
+    environment:
+      POSTGRES_PASSWORD: tivit
+    volumes:
+      - ~/tivitdata:/var/lib/postgresql/data
+    ports:
+      - '5440:5432'
+    networks:
+      - tivit
+
+  api:
+    image: node:22
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - postgres
+    env_file: .env
+    ports:
+      - 8000:8000
+    command: bash -c "yarn api:start"
+    networks:
+      - tivit
+
+  web:
+    image: node:22
+    working_dir: /usr/src/app
+    env_file: .env
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+    command: bash -c "yarn web:start"
+    networks:
+      - tivit
+
+volumes:
+  tivit:

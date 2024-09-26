@@ -1,0 +1,20 @@
+{
+  "name": "desafio-tivit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rodrigo Geurgas <rodrigogeurgas@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "dependencies": {
+    "lerna": "^8.1.8"
+  },
+  "scripts": {
+    "web:start": "yarn workspace @desafio-tivit/web start",
+    "web:relay": "yarn workspace @desafio-tivit/web run relay",
+    "api:start": "yarn workspace @desafio-tivit/api start",
+    "api:gen-schema-types": "yarn workspace @desafio-tivit/api gen-schema-types"
+  }
+}

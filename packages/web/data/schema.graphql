@@ -1,0 +1,63 @@
+type Client implements Node {
+  User: User!
+  _id: String!
+  created_at: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  updated_at: DateTime!
+}
+
+scalar DateTime
+
+scalar EmailAddress
+
+type Item implements Node {
+  User: User!
+  _id: String!
+  created_at: DateTime!
+  description: String!
+  id: ID!
+  name: String!
+  price: PositiveFloat!
+  updated_at: DateTime!
+}
+
+type Mutation {
+  signup(input: SignupInput!): SignupPayload!
+}
+
+interface Node {
+  id: ID!
+}
+
+scalar PositiveFloat
+
+type Query {
+  Clients: [Client!]
+  Items: [Item!]
+  me: User
+  node(id: ID!): Node
+}
+
+input SignupInput {
+  clientMutationId: String
+  email: String!
+  name: String!
+  password: String!
+}
+
+type SignupPayload {
+  User: User
+  clientMutationId: String
+  error: [String!]
+}
+
+type User implements Node {
+  _id: String!
+  created_at: DateTime!
+  email: EmailAddress!
+  id: ID!
+  name: String!
+  updated_at: DateTime!
+}
