@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c050ee300d9a867462c343c942f9042b>>
+ * @generated SignedSource<<a5d99af7b7338e8bc8aea2883ece9f7e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
+export type ItemTypes = "OTHERS" | "PRODUCT" | "SERVICE" | "%future added value";
 export type ItemsQuery$variables = Record<PropertyKey, never>;
 export type ItemsQuery$data = {
   readonly Items: ReadonlyArray<{
@@ -16,6 +17,7 @@ export type ItemsQuery$data = {
     readonly id: string;
     readonly name: string;
     readonly price: any;
+    readonly type: ItemTypes | null | undefined;
   }> | null | undefined;
 };
 export type ItemsQuery = {
@@ -60,6 +62,13 @@ var v0 = [
         "kind": "ScalarField",
         "name": "price",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "type",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -83,16 +92,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "ca03863f8b5d1d94ecb579ec8ec0b89e",
+    "cacheID": "2a9d2de7ad08902e939cd8d18547c35d",
     "id": null,
     "metadata": {},
     "name": "ItemsQuery",
     "operationKind": "query",
-    "text": "query ItemsQuery {\n  Items {\n    id\n    name\n    description\n    price\n  }\n}\n"
+    "text": "query ItemsQuery {\n  Items {\n    id\n    name\n    description\n    price\n    type\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fc1739c8bb6aa104a90fd475c95d4435";
+(node as any).hash = "d541dadde73a2b25f05f5b4cb16af85b";
 
 export default node;

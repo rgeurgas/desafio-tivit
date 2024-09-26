@@ -93,6 +93,7 @@ const Clients = () => {
         <DialogTitle>{t('clients.title')}</DialogTitle>
         <Stack padding={2} spacing={2}>
           <TextField
+            required
             fullWidth
             error={error && name === ''}
             label={t('clients.name')}
@@ -101,6 +102,7 @@ const Clients = () => {
             onChange={(event) => setName(event.target.value)}
           />
           <TextField
+            required
             fullWidth
             error={error && email === ''}
             label={t('clients.email')}
@@ -109,6 +111,7 @@ const Clients = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
           <TextField
+            required
             fullWidth
             error={error && password === ''}
             inputMode='decimal'

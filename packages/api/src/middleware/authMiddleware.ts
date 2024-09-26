@@ -14,9 +14,11 @@ const verifyAsync = promisify<
 
 export const authMiddleware: Middleware = async (ctx, next) => {
   const auth = ctx.request.headers.authorization;
+
   if (!auth) {
     return next();
   }
+
   const [bearer, token] = auth.split(' ');
   if (bearer !== 'Bearer') {
     throw new Error('invalid token');

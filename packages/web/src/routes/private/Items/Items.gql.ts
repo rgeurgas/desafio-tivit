@@ -7,6 +7,7 @@ export const itemsQuery = graphql`
       name
       description
       price
+      type
     }
   }
 `;
@@ -16,15 +17,22 @@ export const upsertItemsMutation = graphql`
     $name: String!
     $description: String!
     $price: PositiveFloat!
+    $type: ItemTypes!
   ) {
     upsertItem(
-      input: { name: $name, price: $price, description: $description }
+      input: {
+        name: $name
+        price: $price
+        description: $description
+        type: $type
+      }
     ) {
       Item {
         id
         description
         name
         price
+        type
       }
     }
   }

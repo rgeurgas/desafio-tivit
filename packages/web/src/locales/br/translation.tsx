@@ -24,6 +24,7 @@ const translationBr = {
     add: 'Adicionar',
     cancel: 'Cancelar',
     items: {
+      type: 'Tipo de item',
       title: 'Adicionar novo item',
       name: 'Nome',
       namePlaceholder: 'Digite o nome do item',
@@ -31,6 +32,9 @@ const translationBr = {
       descriptionPlaceholder: 'Digite a descrição do item',
       price: 'Preço',
       pricePlaceholder: 'Digite o preço do item',
+      PRODUCT: 'Produto',
+      SERVICE: 'Serviço',
+      OTHERS: 'Outros',
     },
     clients: {
       title: 'Adicionar novo cliente',

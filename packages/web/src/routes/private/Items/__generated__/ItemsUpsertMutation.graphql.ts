@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4490a8f38e110247df06585adcb50937>>
+ * @generated SignedSource<<c29dcda81ebdba2aed25b8c49efcf43e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,10 +9,12 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
+export type ItemTypes = "OTHERS" | "PRODUCT" | "SERVICE" | "%future added value";
 export type ItemsUpsertMutation$variables = {
   description: string;
   name: string;
   price: any;
+  type: ItemTypes;
 };
 export type ItemsUpsertMutation$data = {
   readonly upsertItem: {
@@ -21,6 +23,7 @@ export type ItemsUpsertMutation$data = {
       readonly id: string;
       readonly name: string;
       readonly price: any;
+      readonly type: ItemTypes | null | undefined;
     } | null | undefined;
   };
 };
@@ -45,7 +48,12 @@ v2 = {
   "kind": "LocalArgument",
   "name": "price"
 },
-v3 = [
+v3 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "type"
+},
+v4 = [
   {
     "alias": null,
     "args": [
@@ -65,6 +73,11 @@ v3 = [
             "kind": "Variable",
             "name": "price",
             "variableName": "price"
+          },
+          {
+            "kind": "Variable",
+            "name": "type",
+            "variableName": "type"
           }
         ],
         "kind": "ObjectValue",
@@ -111,6 +124,13 @@ v3 = [
             "kind": "ScalarField",
             "name": "price",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "type",
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -124,12 +144,13 @@ return {
     "argumentDefinitions": [
       (v0/*: any*/),
       (v1/*: any*/),
-      (v2/*: any*/)
+      (v2/*: any*/),
+      (v3/*: any*/)
     ],
     "kind": "Fragment",
     "metadata": null,
     "name": "ItemsUpsertMutation",
-    "selections": (v3/*: any*/),
+    "selections": (v4/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
@@ -138,23 +159,24 @@ return {
     "argumentDefinitions": [
       (v1/*: any*/),
       (v0/*: any*/),
-      (v2/*: any*/)
+      (v2/*: any*/),
+      (v3/*: any*/)
     ],
     "kind": "Operation",
     "name": "ItemsUpsertMutation",
-    "selections": (v3/*: any*/)
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "8ecc8c853cf35e8b2c08b631a803f576",
+    "cacheID": "f92097024a975cdea00d3ac708806f5d",
     "id": null,
     "metadata": {},
     "name": "ItemsUpsertMutation",
     "operationKind": "mutation",
-    "text": "mutation ItemsUpsertMutation(\n  $name: String!\n  $description: String!\n  $price: PositiveFloat!\n) {\n  upsertItem(input: {name: $name, price: $price, description: $description}) {\n    Item {\n      id\n      description\n      name\n      price\n    }\n  }\n}\n"
+    "text": "mutation ItemsUpsertMutation(\n  $name: String!\n  $description: String!\n  $price: PositiveFloat!\n  $type: ItemTypes!\n) {\n  upsertItem(input: {name: $name, price: $price, description: $description, type: $type}) {\n    Item {\n      id\n      description\n      name\n      price\n      type\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d810d4d0c5f90a64145148625e69c425";
+(node as any).hash = "ce2f58595e0a3af2a98dbeab26f8111d";
 
 export default node;
