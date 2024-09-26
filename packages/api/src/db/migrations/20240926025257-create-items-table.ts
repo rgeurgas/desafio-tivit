@@ -20,6 +20,10 @@ export async function up(q: QueryInterface) {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
+    type: {
+      type: DataTypes.ENUM('PRODUCT', 'SERVICE', 'OTHERS'),
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.UUID,
       allowNull: false,

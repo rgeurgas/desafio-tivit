@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5d5afd01164ac91d82b439d8e2619d7d>>
+ * @generated SignedSource<<4490a8f38e110247df06585adcb50937>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,7 @@ import { ConcreteRequest } from 'relay-runtime';
 export type ItemsUpsertMutation$variables = {
   description: string;
   name: string;
-  price?: any | null | undefined;
+  price: any;
 };
 export type ItemsUpsertMutation$data = {
   readonly upsertItem: {
@@ -145,16 +145,16 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "ede2237e2e67f500ae00e45fd05333e4",
+    "cacheID": "8ecc8c853cf35e8b2c08b631a803f576",
     "id": null,
     "metadata": {},
     "name": "ItemsUpsertMutation",
     "operationKind": "mutation",
-    "text": "mutation ItemsUpsertMutation(\n  $name: String!\n  $description: String!\n  $price: PositiveFloat\n) {\n  upsertItem(input: {name: $name, price: $price, description: $description}) {\n    Item {\n      id\n      description\n      name\n      price\n    }\n  }\n}\n"
+    "text": "mutation ItemsUpsertMutation(\n  $name: String!\n  $description: String!\n  $price: PositiveFloat!\n) {\n  upsertItem(input: {name: $name, price: $price, description: $description}) {\n    Item {\n      id\n      description\n      name\n      price\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "65dfe5fb96e1b2f961675cb1e6a65544";
+(node as any).hash = "d810d4d0c5f90a64145148625e69c425";
 
 export default node;

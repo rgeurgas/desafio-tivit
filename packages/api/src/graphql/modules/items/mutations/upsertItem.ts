@@ -21,6 +21,7 @@ async function upsertItem(
       name: args.input.name ?? result?.name,
       description: args.input.description ?? result?.description,
       price: args.input.price ?? result?.price,
+      type: args.input.type ?? result?.type,
       user_id: ctx.user!.id,
     });
 

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5d5afd01164ac91d82b439d8e2619d7d>>
+ * @generated SignedSource<<61347ce43f3dbab481c81b58d1d0c12a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,31 +9,30 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type ItemsUpsertMutation$variables = {
-  description: string;
+export type ClientsUpsertMutation$variables = {
+  email: string;
   name: string;
-  price?: any | null | undefined;
+  password: string;
 };
-export type ItemsUpsertMutation$data = {
-  readonly upsertItem: {
-    readonly Item: {
-      readonly description: string;
+export type ClientsUpsertMutation$data = {
+  readonly upsertClient: {
+    readonly Client: {
+      readonly email: string;
       readonly id: string;
       readonly name: string;
-      readonly price: any;
     } | null | undefined;
   };
 };
-export type ItemsUpsertMutation = {
-  response: ItemsUpsertMutation$data;
-  variables: ItemsUpsertMutation$variables;
+export type ClientsUpsertMutation = {
+  response: ClientsUpsertMutation$data;
+  variables: ClientsUpsertMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "description"
+  "name": "email"
 },
 v1 = {
   "defaultValue": null,
@@ -43,7 +42,7 @@ v1 = {
 v2 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "price"
+  "name": "password"
 },
 v3 = [
   {
@@ -53,8 +52,8 @@ v3 = [
         "fields": [
           {
             "kind": "Variable",
-            "name": "description",
-            "variableName": "description"
+            "name": "email",
+            "variableName": "email"
           },
           {
             "kind": "Variable",
@@ -63,25 +62,25 @@ v3 = [
           },
           {
             "kind": "Variable",
-            "name": "price",
-            "variableName": "price"
+            "name": "password",
+            "variableName": "password"
           }
         ],
         "kind": "ObjectValue",
         "name": "input"
       }
     ],
-    "concreteType": "UpsertItemPayload",
+    "concreteType": "UpsertClientPayload",
     "kind": "LinkedField",
-    "name": "upsertItem",
+    "name": "upsertClient",
     "plural": false,
     "selections": [
       {
         "alias": null,
         "args": null,
-        "concreteType": "Item",
+        "concreteType": "Client",
         "kind": "LinkedField",
-        "name": "Item",
+        "name": "Client",
         "plural": false,
         "selections": [
           {
@@ -95,13 +94,6 @@ v3 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "description",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "name",
             "storageKey": null
           },
@@ -109,7 +101,7 @@ v3 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "price",
+            "name": "email",
             "storageKey": null
           }
         ],
@@ -128,7 +120,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ItemsUpsertMutation",
+    "name": "ClientsUpsertMutation",
     "selections": (v3/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -141,20 +133,20 @@ return {
       (v2/*: any*/)
     ],
     "kind": "Operation",
-    "name": "ItemsUpsertMutation",
+    "name": "ClientsUpsertMutation",
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "ede2237e2e67f500ae00e45fd05333e4",
+    "cacheID": "5fd431b4fb3b3c9a7ce312bf19213cef",
     "id": null,
     "metadata": {},
-    "name": "ItemsUpsertMutation",
+    "name": "ClientsUpsertMutation",
     "operationKind": "mutation",
-    "text": "mutation ItemsUpsertMutation(\n  $name: String!\n  $description: String!\n  $price: PositiveFloat\n) {\n  upsertItem(input: {name: $name, price: $price, description: $description}) {\n    Item {\n      id\n      description\n      name\n      price\n    }\n  }\n}\n"
+    "text": "mutation ClientsUpsertMutation(\n  $name: String!\n  $email: String!\n  $password: String!\n) {\n  upsertClient(input: {name: $name, password: $password, email: $email}) {\n    Client {\n      id\n      name\n      email\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "65dfe5fb96e1b2f961675cb1e6a65544";
+(node as any).hash = "023ae92ab563ad744351c38be768ce38";
 
 export default node;

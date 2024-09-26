@@ -14,33 +14,34 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useTranslation } from 'react-i18next';
 import { useLazyLoadQuery, useMutation } from 'react-relay';
 
-import {
-  ItemsQuery,
-  ItemsQuery$data,
-} from './__generated__/ItemsQuery.graphql';
-import { itemsQuery, upsertItemsMutation } from './Items.gql';
-import { ItemsUpsertMutation } from './__generated__/ItemsUpsertMutation.graphql';
+import { ClientsUpsertMutation } from './__generated__/ClientsUpsertMutation.graphql';
 import { useMemo, useState } from 'react';
+import { clientsQuery, upsertClientsMutation } from './Clients.gql';
+import {
+  ClientsQuery,
+  ClientsQuery$data,
+} from './__generated__/ClientsQuery.graphql';
 
-const Items = () => {
+const Clients = () => {
   const { t } = useTranslation();
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [name, setName] = useState('');
-  const [description, setDesciption] = useState('');
-  const [price, setPrice] = useState(0);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  const data = useLazyLoadQuery<ItemsQuery>(itemsQuery, {});
-  const [upsertItem] = useMutation<ItemsUpsertMutation>(upsertItemsMutation);
+  const data = useLazyLoadQuery<ClientsQuery>(clientsQuery, {});
+  const [upsertClient] = useMutation<ClientsUpsertMutation>(
+    upsertClientsMutation
+  );
 
   const columns: GridColDef<
-    NonNullable<NonNullable<ItemsQuery$data>['Items']>[number]
+    NonNullable<NonNullable<ClientsQuery$data>['Clients']>[number]
   >[] = useMemo(
     () => [
-      { field: 'name', headerName: t('items.name') },
-      { field: 'description', headerName: t('items.description') },
-      { field: 'price', headerName: t('items.price'), type: 'number' },
+      { field: 'name', headerName: t('clients.name') },
+      { field: 'email', headerName: t('clients.email') },
     ],
     []
   );
@@ -51,7 +52,7 @@ const Items = () => {
         <Grid2 container px={2} py={1}>
           <Grid2 flexGrow={1}>
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-              {t('drawer.items')}
+              {t('drawer.clients')}
             </Typography>
           </Grid2>
           <Grid2>
@@ -60,8 +61,8 @@ const Items = () => {
               onClick={() => {
                 setDialogOpen(true);
                 setName('');
-                setDesciption('');
-                setPrice(0);
+                setEmail('');
+                setPassword('');
               }}
             >
               {t('add')}
@@ -71,10 +72,10 @@ const Items = () => {
       </AppBar>
       <Grid2 container height='calc(100% - 52.5px)'>
         <Grid2 flexGrow={1}>
-          {data.Items && (
+          {data.Clients && (
             <DataGrid
               disableRowSelectionOnClick
-              rows={data.Items}
+              rows={data.Clients}
               columns={columns}
               initialState={{
                 pagination: {
@@ -89,36 +90,33 @@ const Items = () => {
         </Grid2>
       </Grid2>
       <Dialog onClose={() => setDialogOpen(false)} open={dialogOpen}>
-        <DialogTitle>{t('items.title')}</DialogTitle>
+        <DialogTitle>{t('clients.title')}</DialogTitle>
         <Stack padding={2} spacing={2}>
           <TextField
             fullWidth
             error={error && name === ''}
-            label={t('items.name')}
-            placeholder={t('items.namePlaceholder')}
+            label={t('clients.name')}
+            placeholder={t('clients.namePlaceholder')}
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
           <TextField
             fullWidth
-            error={error && description === ''}
-            label={t('items.description')}
-            placeholder={t('items.descriptionPlaceholder')}
-            value={description}
-            onChange={(event) => setDesciption(event.target.value)}
+            error={error && email === ''}
+            label={t('clients.email')}
+            placeholder={t('clients.emailPlaceholder')}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <TextField
             fullWidth
-            error={error && price <= 0}
+            error={error && password === ''}
             inputMode='decimal'
-            label={t('items.price')}
-            placeholder={t('items.pricePlaceholder')}
-            value={price}
-            onChange={(event) =>
-              setPrice(
-                event.target.value === '' ? 0 : parseFloat(event.target.value)
-              )
-            }
+            label={t('clients.password')}
+            placeholder={t('clients.passwordPlaceholder')}
+            value={password}
+            type='password'
+            onChange={(event) => setPassword(event.target.value)}
           />
         </Stack>
         <DialogActions>
@@ -126,15 +124,15 @@ const Items = () => {
           <Button
             variant='contained'
             onClick={() =>
-              upsertItem({
+              upsertClient({
                 variables: {
                   name,
-                  description,
-                  price,
+                  email,
+                  password,
                 },
                 onError: () => setError(true),
                 onCompleted: (response) => {
-                  if (Boolean(response.upsertItem.Item)) {
+                  if (Boolean(response.upsertClient.Client)) {
                     setDialogOpen(false);
                   } else {
                     setError(true);
@@ -142,17 +140,17 @@ const Items = () => {
                 },
                 updater: (store) => {
                   if (!Boolean(false)) {
-                    const payload = store.getRootField('upsertItem');
-                    const Item = payload.getLinkedRecord('Item');
+                    const payload = store.getRootField('upsertClient');
+                    const Client = payload.getLinkedRecord('Client');
 
                     const root = store.getRoot();
-                    const items = root.getLinkedRecords('Items');
+                    const clients = root.getLinkedRecords('Clients');
 
-                    if (items) {
-                      const newItems = [...items, Item];
-                      root.setLinkedRecords(newItems, 'Items');
+                    if (clients) {
+                      const newClients = [...clients, Client];
+                      root.setLinkedRecords(newClients, 'Clients');
                     } else {
-                      root.setLinkedRecords([Item], 'Items');
+                      root.setLinkedRecords([Client], 'Clients');
                     }
                   }
                 },
@@ -167,4 +165,4 @@ const Items = () => {
   );
 };
 
-export default Items;
+export default Clients;

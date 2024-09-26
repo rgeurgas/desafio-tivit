@@ -40,7 +40,14 @@ type Item implements Node {
   id: ID!
   name: String!
   price: PositiveFloat!
+  type: ItemTypes
   updated_at: DateTime!
+}
+
+enum ItemTypes {
+  OTHERS
+  PRODUCT
+  SERVICE
 }
 
 input LoginInput {
@@ -110,6 +117,7 @@ input UpsertItemInput {
   id: ID
   name: String
   price: PositiveFloat
+  type: ItemTypes
 }
 
 type UpsertItemPayload {

@@ -15,7 +15,7 @@ export const upsertItemsMutation = graphql`
   mutation ItemsUpsertMutation(
     $name: String!
     $description: String!
-    $price: PositiveFloat
+    $price: PositiveFloat!
   ) {
     upsertItem(
       input: { name: $name, price: $price, description: $description }

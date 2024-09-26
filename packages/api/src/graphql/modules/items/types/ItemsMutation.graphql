@@ -9,6 +9,7 @@ input UpsertItemInput {
   name: String
   description: String
   price: PositiveFloat
+  type: ItemTypes
 }
 
 type UpsertItemPayload {

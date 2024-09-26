@@ -1,9 +1,16 @@
+enum ItemTypes {
+  PRODUCT
+  SERVICE
+  OTHERS
+}
+
 type Item implements Node {
   id: ID!
   _id: String!
   name: String!
   description: String!
   price: PositiveFloat!
+  type: ItemTypes
   User: User!
   created_at: DateTime!
   updated_at: DateTime!

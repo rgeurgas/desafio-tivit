@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c050ee300d9a867462c343c942f9042b>>
+ * @generated SignedSource<<2cad453b1cf526e39ebbe494e4541ee4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,18 +9,17 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-export type ItemsQuery$variables = Record<PropertyKey, never>;
-export type ItemsQuery$data = {
-  readonly Items: ReadonlyArray<{
-    readonly description: string;
+export type ClientsQuery$variables = Record<PropertyKey, never>;
+export type ClientsQuery$data = {
+  readonly Clients: ReadonlyArray<{
+    readonly email: string;
     readonly id: string;
     readonly name: string;
-    readonly price: any;
   }> | null | undefined;
 };
-export type ItemsQuery = {
-  response: ItemsQuery$data;
-  variables: ItemsQuery$variables;
+export type ClientsQuery = {
+  response: ClientsQuery$data;
+  variables: ClientsQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -28,9 +27,9 @@ var v0 = [
   {
     "alias": null,
     "args": null,
-    "concreteType": "Item",
+    "concreteType": "Client",
     "kind": "LinkedField",
-    "name": "Items",
+    "name": "Clients",
     "plural": true,
     "selections": [
       {
@@ -51,14 +50,7 @@ var v0 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "description",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "price",
+        "name": "email",
         "storageKey": null
       }
     ],
@@ -70,7 +62,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ItemsQuery",
+    "name": "ClientsQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -79,20 +71,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "ItemsQuery",
+    "name": "ClientsQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "ca03863f8b5d1d94ecb579ec8ec0b89e",
+    "cacheID": "246b8cb821f17e30d28311845c67213b",
     "id": null,
     "metadata": {},
-    "name": "ItemsQuery",
+    "name": "ClientsQuery",
     "operationKind": "query",
-    "text": "query ItemsQuery {\n  Items {\n    id\n    name\n    description\n    price\n  }\n}\n"
+    "text": "query ClientsQuery {\n  Clients {\n    id\n    name\n    email\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "fc1739c8bb6aa104a90fd475c95d4435";
+(node as any).hash = "c36e6cc1240159ed36d958f763ce9e03";
 
 export default node;

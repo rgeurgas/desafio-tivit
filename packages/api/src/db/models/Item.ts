@@ -7,6 +7,7 @@ export interface Item extends Model {
   name: string;
   description: string;
   price: number;
+  type: 'product' | 'service' | 'others';
   user_id: string;
   created_at: Date;
   updated_at: Date;
@@ -34,6 +35,10 @@ export function build(sequelize: Sequelize) {
       },
       price: {
         type: DataTypes.DECIMAL,
+        allowNull: false,
+      },
+      type: {
+        type: DataTypes.ENUM('PRODUCT', 'SERVICE', 'OTHERS'),
         allowNull: false,
       },
     },

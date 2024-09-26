@@ -32,6 +32,15 @@ const translationBr = {
       price: 'Preço',
       pricePlaceholder: 'Digite o preço do item',
     },
+    clients: {
+      title: 'Adicionar novo cliente',
+      name: 'Nome',
+      namePlaceholder: 'Digite o nome do client',
+      password: 'Senha',
+      passwordPlaceholder: 'Digite a senha do cliente',
+      email: 'Email',
+      emailPlaceholder: 'Digite o email do cliente',
+    },
   },
 };
 
