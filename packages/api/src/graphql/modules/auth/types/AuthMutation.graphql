@@ -6,7 +6,7 @@ type Mutation {
 input SignupInput {
   clientMutationId: String
   name: String!
-  email: String!
+  email: EmailAddress!
   password: String!
 }
 
@@ -18,7 +18,7 @@ type SignupPayload {
 
 input LoginInput {
   clientMutationId: String
-  email: String!
+  email: EmailAddress!
   password: String!
 }
 

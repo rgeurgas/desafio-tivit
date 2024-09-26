@@ -1,7 +1,6 @@
 import { createYoga } from 'graphql-yoga';
 import Koa from 'koa';
 import logger from 'koa-logger';
-import cors from '@koa/cors';
 
 import { errorMiddleware } from './middleware/errorMiddleware';
 import { authMiddleware } from './middleware/authMiddleware';
@@ -15,7 +14,6 @@ const yoga = createYoga<Koa.ParameterizedContext>({
 
 export function createServer() {
   const app = new Koa()
-    .use(cors())
     .use(logger())
     .use(errorMiddleware)
     .use(authMiddleware)

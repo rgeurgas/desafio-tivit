@@ -45,7 +45,7 @@ type Item implements Node {
 
 input LoginInput {
   clientMutationId: String
-  email: String!
+  email: EmailAddress!
   password: String!
 }
 
@@ -79,7 +79,7 @@ type Query {
 
 input SignupInput {
   clientMutationId: String
-  email: String!
+  email: EmailAddress!
   name: String!
   password: String!
 }
