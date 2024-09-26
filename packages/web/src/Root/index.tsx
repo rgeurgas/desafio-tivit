@@ -7,7 +7,7 @@ import '../index.css';
 import { ErrorBoundary } from '../components';
 import RelayEnvironment from '../relay/RelayEnvironment';
 import { Login } from '../routes/public';
-import { App, Items, Clients } from '../routes/private';
+import { App, Items, Clients, SalesProposals } from '../routes/private';
 
 const Root: React.FC = () => (
   <RelayEnvironmentProvider environment={RelayEnvironment}>
@@ -22,6 +22,7 @@ const Root: React.FC = () => (
             <Route path='/app/*' element={<App />}>
               <Route path='items' element={<Items />} />
               <Route path='clients' element={<Clients />} />
+              <Route path='salesproposals' element={<SalesProposals />} />
             </Route>
             <Route path='/' element={<Login />} />
           </Routes>

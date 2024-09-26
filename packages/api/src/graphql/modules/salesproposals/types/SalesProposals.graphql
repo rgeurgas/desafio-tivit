@@ -1,0 +1,8 @@
+type SalesProposal implements Node {
+  id: ID!
+  _id: String!
+  Client: Client!
+  Items: [Item!]!
+  created_at: DateTime!
+  updated_at: DateTime!
+}

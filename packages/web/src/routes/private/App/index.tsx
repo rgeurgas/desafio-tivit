@@ -28,6 +28,11 @@ const App = () => {
               <ListItemText primary={t('drawer.clients')} />
             </ListItemButton>
           </ListItem>
+          <ListItem key='salesproposals' disablePadding>
+            <ListItemButton onClick={() => navigate('/app/salesproposals')}>
+              <ListItemText primary={t('drawer.salesProposals')} />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box pl='300px' height='100%'>

@@ -1,0 +1,32 @@
+type Mutation {
+  upsertSalesProposals(
+    input: UpsertSalesProposalsInput!
+  ): UpsertSalesProposalsPayload!
+  deleteSalesProposals(
+    input: DeleteSalesProposalsInput!
+  ): DeleteSalesProposalsPayload!
+}
+
+input UpsertSalesProposalsInput {
+  clientMutationId: String
+  id: ID
+  name: String
+  client: ID
+  items: [ID!]
+}
+
+type UpsertSalesProposalsPayload {
+  clientMutationId: String
+  error: [String!]
+  SalesProposal: SalesProposal
+}
+
+input DeleteSalesProposalsInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteSalesProposalsPayload {
+  clientMutationId: String
+  error: [String!]
+}

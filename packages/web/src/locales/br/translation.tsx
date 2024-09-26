@@ -20,6 +20,7 @@ const translationBr = {
     drawer: {
       items: 'Itens',
       clients: 'Clientes',
+      salesProposals: 'Propostas de Vendas',
     },
     add: 'Adicionar',
     cancel: 'Cancelar',
@@ -44,6 +45,15 @@ const translationBr = {
       passwordPlaceholder: 'Digite a senha do cliente',
       email: 'Email',
       emailPlaceholder: 'Digite o email do cliente',
+    },
+    salesProposals: {
+      name: 'Nome',
+      namePlaceholder: 'Digite o nome da proposta',
+      client: 'Cliente',
+      clientPlaceholder: 'Escolha o cliente que recebera a proposta',
+      items: 'Itens',
+      itemsPlaceholder: 'Escolha os items da proposta',
+      total: 'Valor total',
     },
   },
 };

@@ -17,6 +17,7 @@ generates:
         User: ../../db/models/User#User
         Item: ../../db/models/Item#Item
         Client: ../../db/models/Client#Client
+        SalesProposal: ../../db/models/SalesProposal#SalesProposal
   ../web/data/schema.graphql:
     plugins:
       - schema-ast

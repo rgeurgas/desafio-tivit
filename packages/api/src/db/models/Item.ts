@@ -7,7 +7,7 @@ export interface Item extends Model {
   name: string;
   description: string;
   price: number;
-  type: 'product' | 'service' | 'others';
+  type: 'PRODUCT' | 'SERVICE' | 'OTHERS';
   user_id: string;
   created_at: Date;
   updated_at: Date;

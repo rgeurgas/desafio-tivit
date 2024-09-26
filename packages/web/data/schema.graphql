@@ -30,6 +30,16 @@ type DeleteItemPayload {
   error: [String!]
 }
 
+input DeleteSalesProposalsInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteSalesProposalsPayload {
+  clientMutationId: String
+  error: [String!]
+}
+
 scalar EmailAddress
 
 type Item implements Node {
@@ -65,10 +75,12 @@ type LoginPayload {
 type Mutation {
   deleteClient(input: DeleteClientInput!): DeleteClientPayload!
   deleteItem(input: DeleteItemInput!): DeleteItemPayload!
+  deleteSalesProposals(input: DeleteSalesProposalsInput!): DeleteSalesProposalsPayload!
   login(input: LoginInput!): LoginPayload!
   signup(input: SignupInput!): SignupPayload!
   upsertClient(input: UpsertClientInput!): UpsertClientPayload!
   upsertItem(input: UpsertItemInput!): UpsertItemPayload!
+  upsertSalesProposals(input: UpsertSalesProposalsInput!): UpsertSalesProposalsPayload!
 }
 
 interface Node {
@@ -80,8 +92,18 @@ scalar PositiveFloat
 type Query {
   Clients: [Client!]
   Items: [Item!]
+  SalesProposals: [SalesProposal!]
   me: User
   node(id: ID!): Node
+}
+
+type SalesProposal implements Node {
+  Client: Client!
+  Items: [Item!]!
+  _id: String!
+  created_at: DateTime!
+  id: ID!
+  updated_at: DateTime!
 }
 
 input SignupInput {
@@ -122,6 +144,20 @@ input UpsertItemInput {
 
 type UpsertItemPayload {
   Item: Item
+  clientMutationId: String
+  error: [String!]
+}
+
+input UpsertSalesProposalsInput {
+  client: ID
+  clientMutationId: String
+  id: ID
+  items: [ID!]
+  name: String
+}
+
+type UpsertSalesProposalsPayload {
+  SalesProposal: SalesProposal
   clientMutationId: String
   error: [String!]
 }
