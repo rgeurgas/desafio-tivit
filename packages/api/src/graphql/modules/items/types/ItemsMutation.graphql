@@ -1,0 +1,28 @@
+type Mutation {
+  upsertItem(input: UpsertItemInput!): UpsertItemPayload!
+  deleteItem(input: DeleteItemInput!): DeleteItemPayload!
+}
+
+input UpsertItemInput {
+  clientMutationId: String
+  id: ID
+  name: String
+  description: String
+  price: PositiveFloat
+}
+
+type UpsertItemPayload {
+  clientMutationId: String
+  error: [String!]
+  Item: Item
+}
+
+input DeleteItemInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteItemPayload {
+  clientMutationId: String
+  error: [String!]
+}

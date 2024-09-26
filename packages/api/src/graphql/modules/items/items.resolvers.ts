@@ -2,6 +2,9 @@ import { toGlobalId } from 'graphql-relay';
 
 import { GQLResolvers } from '../../generated/schema';
 
+import upsertItem from './mutations/upsertItem';
+import deleteItem from './mutations/deleteItem';
+
 const resolvers: GQLResolvers = {
   Item: {
     id({ id }) {
@@ -15,6 +18,10 @@ const resolvers: GQLResolvers = {
   Query: {
     Items: async (_parent, _args, ctx) =>
       ctx.models.Item.findAll({ raw: true }),
+  },
+  Mutation: {
+    upsertItem: async (_parent, args, ctx) => upsertItem(args, ctx),
+    deleteItem: async (_parent, args, ctx) => deleteItem(args, ctx),
   },
 };
 

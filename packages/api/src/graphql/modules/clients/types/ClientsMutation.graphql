@@ -1,0 +1,28 @@
+type Mutation {
+  upsertClient(input: UpsertClientInput!): UpsertClientPayload!
+  deleteClient(input: DeleteClientInput!): DeleteClientPayload!
+}
+
+input UpsertClientInput {
+  clientMutationId: String
+  id: ID
+  name: String
+  email: String
+  password: String
+}
+
+type UpsertClientPayload {
+  clientMutationId: String
+  error: [String!]
+  Client: Client
+}
+
+input DeleteClientInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteClientPayload {
+  clientMutationId: String
+  error: [String!]
+}

@@ -10,6 +10,26 @@ type Client implements Node {
 
 scalar DateTime
 
+input DeleteClientInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteClientPayload {
+  clientMutationId: String
+  error: [String!]
+}
+
+input DeleteItemInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteItemPayload {
+  clientMutationId: String
+  error: [String!]
+}
+
 scalar EmailAddress
 
 type Item implements Node {
@@ -36,8 +56,12 @@ type LoginPayload {
 }
 
 type Mutation {
+  deleteClient(input: DeleteClientInput!): DeleteClientPayload!
+  deleteItem(input: DeleteItemInput!): DeleteItemPayload!
   login(input: LoginInput!): LoginPayload!
   signup(input: SignupInput!): SignupPayload!
+  upsertClient(input: UpsertClientInput!): UpsertClientPayload!
+  upsertItem(input: UpsertItemInput!): UpsertItemPayload!
 }
 
 interface Node {
@@ -62,6 +86,34 @@ input SignupInput {
 
 type SignupPayload {
   User: User
+  clientMutationId: String
+  error: [String!]
+}
+
+input UpsertClientInput {
+  clientMutationId: String
+  email: String
+  id: ID
+  name: String
+  password: String
+}
+
+type UpsertClientPayload {
+  Client: Client
+  clientMutationId: String
+  error: [String!]
+}
+
+input UpsertItemInput {
+  clientMutationId: String
+  description: String
+  id: ID
+  name: String
+  price: PositiveFloat
+}
+
+type UpsertItemPayload {
+  Item: Item
   clientMutationId: String
   error: [String!]
 }
