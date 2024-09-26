@@ -17,6 +17,21 @@ const translationBr = {
       error: 'Email ou senha inválidos.',
       success: 'Login realizado com sucesso! Redirecionando...',
     },
+    drawer: {
+      items: 'Itens',
+      clients: 'Clientes',
+    },
+    add: 'Adicionar',
+    cancel: 'Cancelar',
+    items: {
+      title: 'Adicionar novo item',
+      name: 'Nome',
+      namePlaceholder: 'Digite o nome do item',
+      description: 'Descrição',
+      descriptionPlaceholder: 'Digite a descrição do item',
+      price: 'Preço',
+      pricePlaceholder: 'Digite o preço do item',
+    },
   },
 };
 

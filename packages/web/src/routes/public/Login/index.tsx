@@ -13,6 +13,7 @@ import { useMutation } from 'react-relay';
 import { LoginMutation } from './__generated__/LoginMutation.graphql';
 import { loginMutation } from './Login.gql';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -23,6 +24,7 @@ const Login = () => {
 
   const [login] = useMutation<LoginMutation>(loginMutation);
   const [_, setCookie] = useCookies(['Bearer']);
+  const navigate = useNavigate();
 
   const validateInput = () => {
     setError(false);
@@ -39,6 +41,7 @@ const Login = () => {
         onCompleted: (response) => {
           if (Boolean(response.login?.token)) {
             setCookie('Bearer', response.login!.token, { path: '/' });
+            navigate('/app');
           } else if (Boolean(response.login?.error)) {
             setError(true);
           }

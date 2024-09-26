@@ -28,13 +28,17 @@ function buildModel(seq: Sequelize) {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
   });
-  ItemModel.belongsTo(UserModel);
+  ItemModel.belongsTo(UserModel, {
+    foreignKey: 'user_id',
+  });
 
   ClientModel.hasMany(ClientModel, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
   });
-  ClientModel.belongsTo(ClientModel);
+  ClientModel.belongsTo(ClientModel, {
+    foreignKey: 'user_id',
+  });
 
   const models = {
     User: UserModel,

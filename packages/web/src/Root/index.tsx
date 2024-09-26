@@ -1,19 +1,13 @@
 import { Suspense } from 'react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import CircularProgress from '@mui/material/CircularProgress';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import '../index.css';
 import { ErrorBoundary } from '../components';
 import RelayEnvironment from '../relay/RelayEnvironment';
 import { Login } from '../routes/public';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Login />,
-  },
-]);
+import { App, Items } from '../routes/private';
 
 const Root: React.FC = () => (
   <RelayEnvironmentProvider environment={RelayEnvironment}>
@@ -23,7 +17,15 @@ const Root: React.FC = () => (
       }
     >
       <ErrorBoundary>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+          <Routes>
+            <Route path='/app/*' element={<App />}>
+              <Route path='items' element={<Items />} />
+              <Route path='clients' />
+            </Route>
+            <Route path='/' element={<Login />} />
+          </Routes>
+        </BrowserRouter>
       </ErrorBoundary>
     </Suspense>
   </RelayEnvironmentProvider>
