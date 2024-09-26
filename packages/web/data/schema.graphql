@@ -23,7 +23,20 @@ type Item implements Node {
   updated_at: DateTime!
 }
 
+input LoginInput {
+  clientMutationId: String
+  email: String!
+  password: String!
+}
+
+type LoginPayload {
+  clientMutationId: String
+  error: [String!]
+  token: String
+}
+
 type Mutation {
+  login(input: LoginInput!): LoginPayload!
   signup(input: SignupInput!): SignupPayload!
 }
 

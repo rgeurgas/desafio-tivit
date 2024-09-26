@@ -1,21 +1,18 @@
 import { IMiddleware } from 'graphql-middleware';
-import { bool, object, string, ValidationError } from 'yup';
+import { object, string, ValidationError } from 'yup';
 
-import { GQLMutationSignupArgs } from '../../../generated/schema';
-import { getNodeIdYupValidationSchema } from '../../helper/RelayNodeValidator';
+import { GQLMutationLoginArgs } from '../../../generated/schema';
 import { GraphQLContext } from '../../../context';
 
-export const signup: IMiddleware<
+export const login: IMiddleware<
   Record<string, unknown>,
   GraphQLContext,
-  GQLMutationSignupArgs
+  GQLMutationLoginArgs
 > = async (resolve, parent, args, ctx, info) => {
   try {
     const schema1 = object({
       input: object({
         clientMutationId: string(),
-        id: getNodeIdYupValidationSchema(['User'], false),
-        name: string().required(),
         email: string().required(),
         password: string().required(),
       }).required(),

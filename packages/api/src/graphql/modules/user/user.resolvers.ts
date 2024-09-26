@@ -1,7 +1,6 @@
 import { toGlobalId } from 'graphql-relay';
 
 import { GQLResolvers } from '../../generated/schema';
-import signup from './mutations/signup';
 
 const resolvers: GQLResolvers = {
   User: {
@@ -14,9 +13,6 @@ const resolvers: GQLResolvers = {
   },
   Query: {
     me: (_, __, ctx) => ctx.user ?? null,
-  },
-  Mutation: {
-    signup: async (_, args, ctx) => signup(args, ctx),
   },
 };
 

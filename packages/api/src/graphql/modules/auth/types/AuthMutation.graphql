@@ -1,5 +1,6 @@
 type Mutation {
   signup(input: SignupInput!): SignupPayload!
+  login(input: LoginInput!): LoginPayload!
 }
 
 input SignupInput {
@@ -13,4 +14,16 @@ type SignupPayload {
   clientMutationId: String
   error: [String!]
   User: User
+}
+
+input LoginInput {
+  clientMutationId: String
+  email: String!
+  password: String!
+}
+
+type LoginPayload {
+  clientMutationId: String
+  error: [String!]
+  token: String
 }

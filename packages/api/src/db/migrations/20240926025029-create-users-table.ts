@@ -21,6 +21,9 @@ export async function up(q: QueryInterface) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,

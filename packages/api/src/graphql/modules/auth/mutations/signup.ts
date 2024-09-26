@@ -27,10 +27,11 @@ async function signup(args: GQLMutationSignupArgs, ctx: GraphQLContext) {
       clientMutationId: args.input.clientMutationId,
       User: user,
     };
-  } catch (error) {
+  } catch (err) {
+    const error = err as Error;
     return {
       clientMutationId: args.input.clientMutationId,
-      error: [error],
+      error: [error.message],
     };
   }
 }

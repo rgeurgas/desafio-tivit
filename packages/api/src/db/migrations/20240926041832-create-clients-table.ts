@@ -30,6 +30,9 @@ export async function up(q: QueryInterface) {
         key: 'id',
       },
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,
